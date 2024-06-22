@@ -4,7 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-#      ./waybar.nix	
+      ./waybar.nix	
     ];
 
   # Bootloader.
@@ -170,26 +170,6 @@ environment.gnome.excludePackages = (with pkgs; [
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    style = ''
-      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
-
-      window#waybar {
-        background: transparent;
-        border-bottom: none;
-      }
-
-      * {
-        ${if config.hostId == "yoga" then ''
-        font-size: 18px;
-      '' else ''
-
-        ''}
-
 
 
 
